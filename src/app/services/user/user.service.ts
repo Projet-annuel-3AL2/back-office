@@ -38,15 +38,15 @@ export class UserService {
       }))
   }
 
-  deleteUser(id): Observable<void> {
+  deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}`)
   }
 
-  deleteBannerPicture(id): Observable<void> {
+  deleteBannerPicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}/profile-picture`)
   }
 
-  deleteProfilePicture(id): Observable<void> {
+  deleteProfilePicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}/banner-picture`)
   }
 }
