@@ -13,12 +13,14 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {LoginComponent} from "./components/page_/auth_/login/login.component";
 import {AppRoutingModule} from "./app-routing";
+import {PageUsersComponent} from "./components/page_/page-users/page-users.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    PageUsersComponent
   ],
   imports: [
     BrowserModule,
