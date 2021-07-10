@@ -1,0 +1,14 @@
+.page-users-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-users-filter {
+  width: 100%;
+}
+
+.page-users-table {
+  width: 100%;
+}
