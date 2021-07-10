@@ -4,6 +4,14 @@
       <img alt="logo" height="75" src="../../../assets/images/logo.png">
     </a>
   </div>
+  <div *ngIf="_authService.isAuthenticated()">
+    <button [matMenuTriggerFor]="menu" mat-button>Liste des pages</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['']">
+        <span>Liste des Utilisateurs</span>
+      </button>
+    </mat-menu>
+  </div>
   <div fxFlex fxLayoutAlign="end center">
     <div *ngIf="!_authService.isAuthenticated()" class="auth-buttons">
       <button class="m-2" mat-flat-button routerLink="/login">Connexion</button>
