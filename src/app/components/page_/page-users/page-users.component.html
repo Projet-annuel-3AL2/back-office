@@ -22,6 +22,28 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Certification </th>
           <td mat-cell *matCellDef="let row"> {{row.certification !== undefined ? "Oui": "Non"}} </td>
         </ng-container>
+        <ng-container matColumnDef="profilePicture">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo de profil </th>
+          <td mat-cell *matCellDef="let row">
+            <div *ngIf="row.profilePicture === undefined">
+              <p>Pas de photo</p>
+            </div>
+            <div *ngIf="row.profilePicture !== undefined">
+              <button mat-button (click)="showDialogShowPicture(row.profilePicture.link)"></button>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="bannerPicture">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo de profil </th>
+          <td mat-cell *matCellDef="let row">
+            <div *ngIf="row.bannerPicture === undefined">
+              <p>Pas de photo</p>
+            </div>
+            <div *ngIf="row.bannerPicture !== undefined">
+              <button mat-button (click)="showDialogShowPicture(row.bannerPicture.link)"></button>
+            </div>
+          </td>
+        </ng-container>
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
@@ -36,7 +58,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          <td class="mat-cell" colspan="4">Il n'y a pas de résultat correspondant à la recherche "{{input.value}}"</td>
         </tr>
       </table>
       <mat-paginator [length]="(_userService.users|async)?.length"
