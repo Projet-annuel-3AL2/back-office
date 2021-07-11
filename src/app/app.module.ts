@@ -16,6 +16,7 @@ import {AppRoutingModule} from "./app-routing";
 import {PageUsersComponent} from "./components/page_/page-users/page-users.component";
 import {DialogShowPictureComponent} from "./components/dialog_/dialog-show-picture/dialog-show-picture.component";
 import {PageOrganisationsComponent} from "./components/page_/page-organisations/page-organisations.component";
+import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {PageOrganisationsComponent} from "./components/page_/page-organisations/
     PageUsersComponent,
     PageUsersComponent,
     DialogShowPictureComponent,
-    PageOrganisationsComponent
+    PageOrganisationsComponent,
+    PageOrganisationComponent
   ],
   imports: [
     BrowserModule,
