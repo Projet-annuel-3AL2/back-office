@@ -1,18 +1,18 @@
-<div class="page-users row m-0">
+<div class="page-organisations row m-0">
   <div class="col-md-1 my-3"></div>
   <div class="col-md-9 my-3">
     <div class="page-organisations-title">
       <h1>Liste des Organisations</h1>
     </div>
     <mat-form-field class="page-organisations-filter" appearance="standard">
-      <mat-label>Recherhe</mat-label>
+      <mat-label>Recherche</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Organisation" #input>
     </mat-form-field>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" class="page-organisations-table" matSort>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          <td mat-cell *matCellDef="let row"> <a  [routerLink]="['/organisation/'+ row.id]">{{row.name}}</a> </td>
         </ng-container>
         <ng-container matColumnDef="profilePicture">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo de profil </th>

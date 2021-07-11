@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {User} from "../../shared/models/user.model";
+import {OrganisationMembership} from "../../shared/models/organisation_membership.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,18 @@ import {User} from "../../shared/models/user.model";
 export class OrganisationService {
   public organisations: Observable<Organisation[]>;
   public organisation: Observable<Organisation>;
-  public members: Observable<User[]>
+  public members: Observable<OrganisationMembership[]>
   private organisationsSubject: BehaviorSubject<Organisation[]>;
   private organisationSubject: BehaviorSubject<Organisation>;
-  private membersSubject: BehaviorSubject<User[]>;
+  private membersSubject: BehaviorSubject<OrganisationMembership[]>;
 
   constructor(private http: HttpClient) {
     this.organisationsSubject = new BehaviorSubject<Organisation[]>(null);
     this.organisationSubject = new BehaviorSubject<Organisation>(null);
+    this.membersSubject = new BehaviorSubject<OrganisationMembership[]>(null);
     this.organisations = this.organisationsSubject.asObservable();
     this.organisation = this.organisationSubject.asObservable();
+    this.members = this.membersSubject.asObservable();
   }
 
   getById(id: string): Observable<Organisation>{
@@ -40,11 +43,11 @@ export class OrganisationService {
       }));
   }
 
-  getMemberOrganisation(organisationId: string): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrl}/organisation/${organisationId}/members`)
-      .pipe(map( users=>{
-        this.membersSubject.next(users);
-        return users;
+  getOrganisationMembership(organisationId: string): Observable<OrganisationMembership[]> {
+    return this.http.get<OrganisationMembership[]>(`${environment.baseUrl}/organisation/${organisationId}/membership`)
+      .pipe(map( members=>{
+        this.membersSubject.next(members);
+        return members;
       }));
   }
 
