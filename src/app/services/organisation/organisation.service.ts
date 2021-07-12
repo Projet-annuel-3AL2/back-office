@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
 import {User} from "../../shared/models/user.model";
 import {OrganisationMembership} from "../../shared/models/organisation_membership.model";
+import {OrganisationRequest} from "../../shared/models/organisation_request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,24 @@ import {OrganisationMembership} from "../../shared/models/organisation_membershi
 export class OrganisationService {
   public organisations: Observable<Organisation[]>;
   public organisation: Observable<Organisation>;
-  public members: Observable<OrganisationMembership[]>
+  public members: Observable<OrganisationMembership[]>;
+  public organisationRequests: Observable<OrganisationRequest[]>;
+
   private organisationsSubject: BehaviorSubject<Organisation[]>;
   private organisationSubject: BehaviorSubject<Organisation>;
   private membersSubject: BehaviorSubject<OrganisationMembership[]>;
+  private organisationRequestsSubject: BehaviorSubject<OrganisationRequest[]>;
+
 
   constructor(private http: HttpClient) {
     this.organisationsSubject = new BehaviorSubject<Organisation[]>(null);
     this.organisationSubject = new BehaviorSubject<Organisation>(null);
     this.membersSubject = new BehaviorSubject<OrganisationMembership[]>(null);
+    this.organisationRequestsSubject = new BehaviorSubject<OrganisationRequest[]>(null);
     this.organisations = this.organisationsSubject.asObservable();
     this.organisation = this.organisationSubject.asObservable();
     this.members = this.membersSubject.asObservable();
+    this.organisationRequests = this.organisationRequestsSubject.asObservable();
   }
 
   getById(id: string): Observable<Organisation>{
@@ -49,6 +56,22 @@ export class OrganisationService {
         this.membersSubject.next(members);
         return members;
       }));
+  }
+
+  getRequests(): Observable<OrganisationRequest[]> {
+    return this.http.get<OrganisationRequest[]>(`${environment.baseUrl}/organisation/requests/organisation`)
+      .pipe(map(organisationRequests => {
+          this.organisationRequestsSubject.next(organisationRequests);
+          return organisationRequests;
+      }))
+  }
+
+  acceptRequest(id: string): Observable<void> {
+    return this.http.put<void>(`${environment.baseUrl}/organisation/${id}/accept`, null);
+  }
+
+  rejectRequest(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.baseUrl}/organisation/${id}/reject`);
   }
 
   deleteOrganisation(id: string): Observable<void> {
