@@ -11,14 +11,15 @@ import {map} from "rxjs/operators";
 export class UserService {
 
   public user: Observable<User>;
-  private userSubject: BehaviorSubject<User>;
   public users: Observable<User[]>;
+
+  private userSubject: BehaviorSubject<User>;
   private usersSubject: BehaviorSubject<User[]>
 
   constructor(private http: HttpClient) {
     this.userSubject = new BehaviorSubject<User>(null);
-    this.user = this.userSubject.asObservable();
     this.usersSubject = new BehaviorSubject<User[]>(null);
+    this.user = this.userSubject.asObservable();
     this.users = this.usersSubject.asObservable();
   }
 
