@@ -1,0 +1,29 @@
+.page-list-category-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-list-category-filter {
+  width: 100%;
+}
+
+.page-list-category-table {
+  width: 100%;
+
+}
+
+.tab-list-category.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.button-create-event {
+  height: 35px;
+  background-color: #00643C !important;
+  color: #ffffff;
+}
+
+
