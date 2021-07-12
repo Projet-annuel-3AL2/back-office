@@ -7,13 +7,16 @@ import {PageUsersComponent} from "./components/page_/page-users/page-users.compo
 import {PageOrganisationsComponent} from "./components/page_/page-organisations/page-organisations.component";
 import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
 import {PageRequestOrganisationComponent} from "./components/page_/page-request-organisation/page-request-organisation.component";
+import {PageListCertificationComponent} from "./components/page_/page-list-certification/page-list-certification.component";
 
 const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
   {path: '', component: PageUsersComponent, canActivate: [AuthGuardService]},
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
-  {path: 'requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
+  {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
+  {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'certification/requests', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo:"/"}
 ];
 

@@ -18,6 +18,8 @@ import {DialogShowPictureComponent} from "./components/dialog_/dialog-show-pictu
 import {PageOrganisationsComponent} from "./components/page_/page-organisations/page-organisations.component";
 import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
 import {PageRequestOrganisationComponent} from "./components/page_/page-request-organisation/page-request-organisation.component";
+import {PageListCertificationComponent} from "./components/page_/page-list-certification/page-list-certification.component";
+import {PageRequestsCertificationComponent} from "./components/page_/page-requests-certification/page-requests-certification.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {PageRequestOrganisationComponent} from "./components/page_/page-request-
     DialogShowPictureComponent,
     PageOrganisationsComponent,
     PageOrganisationComponent,
-    PageRequestOrganisationComponent
+    PageRequestOrganisationComponent,
+    PageListCertificationComponent,
+    PageRequestsCertificationComponent
   ],
   imports: [
     BrowserModule,
