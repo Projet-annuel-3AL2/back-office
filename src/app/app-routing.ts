@@ -17,7 +17,7 @@ const appRoutes: Routes= [
   {path: '', component: PageUsersComponent, canActivate: [AuthGuardService]},
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
-  {path: 'event', component: PageListEventComponent, canActivate: [AuthGuardService]},
+  {path: 'events', component: PageListEventComponent, canActivate: [AuthGuardService]},
   {path: 'event/:id', component: PageEventComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
