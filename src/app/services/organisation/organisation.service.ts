@@ -59,7 +59,7 @@ export class OrganisationService {
   }
 
   getRequests(): Observable<OrganisationRequest[]> {
-    return this.http.get<OrganisationRequest[]>(`${environment.baseUrl}/organisation/requests/organisation`)
+    return this.http.get<OrganisationRequest[]>(`${environment.baseUrl}/organisation/requests`)
       .pipe(map(organisationRequests => {
           this.organisationRequestsSubject.next(organisationRequests);
           return organisationRequests;

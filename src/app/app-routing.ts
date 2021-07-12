@@ -18,10 +18,10 @@ const appRoutes: Routes= [
   {path: '', component: PageUsersComponent, canActivate: [AuthGuardService]},
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
+  {path: 'organisation/requests/all', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'events', component: PageListEventComponent, canActivate: [AuthGuardService]},
   {path: 'event/:id', component: PageEventComponent, canActivate: [AuthGuardService]},
   {path: 'categories', component: PageListCategoryComponent, canActivate: [AuthGuardService]},
-  {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
   {path: 'certification/requests', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo:"/"}
