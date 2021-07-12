@@ -22,6 +22,9 @@ import {PageListCertificationComponent} from "./components/page_/page-list-certi
 import {PageRequestsCertificationComponent} from "./components/page_/page-requests-certification/page-requests-certification.component";
 import {PageListEventComponent} from "./components/page_/page-list-event/page-list-event.component";
 import {PageEventComponent} from "./components/page_/page-event/page-event.component";
+import {PageListCategoryComponent} from "./components/page_/page-list-category/page-list-category.component";
+import {DialogCreateCategoryComponent} from "./components/dialog_/dialog-create-category/dialog-create-category.component";
+import {DialogUpdateCategoryComponent} from "./components/dialog_/dialog-update-category/dialog-update-category.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,11 @@ import {PageEventComponent} from "./components/page_/page-event/page-event.compo
     PageListCertificationComponent,
     PageRequestsCertificationComponent,
     PageListEventComponent,
-    PageEventComponent
+    PageEventComponent,
+    PageListCategoryComponent,
+    DialogCreateCategoryComponent,
+    DialogUpdateCategoryComponent
+
   ],
   imports: [
     BrowserModule,
