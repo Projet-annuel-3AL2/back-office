@@ -17,6 +17,7 @@ import {PageUsersComponent} from "./components/page_/page-users/page-users.compo
 import {DialogShowPictureComponent} from "./components/dialog_/dialog-show-picture/dialog-show-picture.component";
 import {PageOrganisationsComponent} from "./components/page_/page-organisations/page-organisations.component";
 import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
+import {PageRequestOrganisationComponent} from "./components/page_/page-request-organisation/page-request-organisation.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PageOrganisationComponent} from "./components/page_/page-organisation/pa
     PageUsersComponent,
     DialogShowPictureComponent,
     PageOrganisationsComponent,
-    PageOrganisationComponent
+    PageOrganisationComponent,
+    PageRequestOrganisationComponent
   ],
   imports: [
     BrowserModule,

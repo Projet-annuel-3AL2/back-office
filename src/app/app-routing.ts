@@ -6,12 +6,14 @@ import {AuthGuardService} from "./services/auth/auth-guard.service";
 import {PageUsersComponent} from "./components/page_/page-users/page-users.component";
 import {PageOrganisationsComponent} from "./components/page_/page-organisations/page-organisations.component";
 import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
+import {PageRequestOrganisationComponent} from "./components/page_/page-request-organisation/page-request-organisation.component";
 
 const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
   {path: '', component: PageUsersComponent, canActivate: [AuthGuardService]},
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
+  {path: 'requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo:"/"}
 ];
 
