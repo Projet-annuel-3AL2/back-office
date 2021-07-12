@@ -1,12 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {Organisation} from "../../../shared/models/organisation.model";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {OrganisationRequest} from "../../../shared/models/organisation_request.model";
 import {OrganisationService} from "../../../services/organisation/organisation.service";
 import {environment} from "../../../../environments/environment";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-page-request-organisation',
@@ -19,6 +17,7 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<OrganisationRequest>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   constructor(public _organisationService: OrganisationService) { }
 
   async ngOnInit(): Promise<void> {
