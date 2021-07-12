@@ -25,16 +25,7 @@ export class PageOrganisationsComponent implements OnInit, AfterViewInit {
               public _organisationService: OrganisationService) { }
 
   async ngOnInit(): Promise<void> {
-    this._organisationService.getAllOrganisation().subscribe({
-      error: err => {
-        if (!environment.production) {
-          console.error('Error: ', err);
-        }
-      }
-    });
-    await this._organisationService.organisations.subscribe(organisations => {
-      this.dataSource = new MatTableDataSource(organisations)
-    })
+    await this.updateData();
   }
 
   ngAfterViewInit() {
@@ -54,8 +45,8 @@ export class PageOrganisationsComponent implements OnInit, AfterViewInit {
 
   deleteOrganisation(id: string) {
     this._organisationService.deleteOrganisation(id).subscribe({
-      next: () => {
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production) {
@@ -67,8 +58,8 @@ export class PageOrganisationsComponent implements OnInit, AfterViewInit {
 
   deleteProfilePicture(id: string) {
     this._organisationService.deleteProfilePicture(id).subscribe({
-      next: () => {
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production) {
@@ -80,8 +71,8 @@ export class PageOrganisationsComponent implements OnInit, AfterViewInit {
 
   deleteBannerPicture(id: string) {
     this._organisationService.deleteBannerPicture(id).subscribe({
-      next: () => {
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production) {
@@ -98,5 +89,18 @@ export class PageOrganisationsComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  private async updateData() {
+    this._organisationService.getAllOrganisation().subscribe({
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    });
+    await this._organisationService.organisations.subscribe(organisations => {
+      this.dataSource = new MatTableDataSource(organisations)
+    });
   }
 }

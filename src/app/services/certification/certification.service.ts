@@ -32,8 +32,8 @@ export class CertificationService {
       }));
   }
 
-  getAllRequest(): Observable<CertificationRequest[]> {
-    return this.http.get<CertificationRequest[]>(`${environment.baseUrl}/certification/request`)
+  getAllRequests(): Observable<CertificationRequest[]> {
+    return this.http.get<CertificationRequest[]>(`${environment.baseUrl}/certification/requests`)
       .pipe(map( certificationRequests => {
         this.certificationRequestsSubject.next(certificationRequests);
         return certificationRequests;

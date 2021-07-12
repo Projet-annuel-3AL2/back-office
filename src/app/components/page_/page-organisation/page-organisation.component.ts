@@ -24,24 +24,7 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
               private _activatedRoute: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
-    this.organisationId = this._activatedRoute.snapshot.paramMap.get("id");
-    this._organisationService.getById(this.organisationId).subscribe({
-      error: err => {
-        if (!environment.production) {
-          console.log('Error: ', err);
-        }
-      }
-    });
-    this._organisationService.getOrganisationMembership(this.organisationId).subscribe({
-      error: err => {
-        if (!environment.production) {
-          console.log('Error: ', err);
-        }
-      }
-    })
-    await this._organisationService.members.subscribe(organisationMembership => {
-      this.dataSource = new MatTableDataSource(organisationMembership)
-    })
+    await this.updateData();
   }
 
   ngAfterViewInit() {
@@ -60,8 +43,8 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
 
   deleteMembership(id) {
     this._organisationService.deleteOrganisationMembership(id, this.organisationId).subscribe({
-      next: () =>{
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production){
@@ -74,8 +57,8 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
   giveAdmin(id) {
     console.log(id)
     this._organisationService.giveAdminToMember(id, this.organisationId).subscribe({
-      next: () =>{
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production){
@@ -87,14 +70,35 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
 
   removeAdminToAdminMember(id) {
     this._organisationService.removeAdminToAdminMember(id, this.organisationId).subscribe({
-      next: () =>{
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production){
           console.log('Error: ', err);
         }
       }
+    })
+  }
+
+  private async updateData() {
+    this.organisationId = this._activatedRoute.snapshot.paramMap.get("id");
+    this._organisationService.getById(this.organisationId).subscribe({
+      error: err => {
+        if (!environment.production) {
+          console.log('Error: ', err);
+        }
+      }
+    });
+    this._organisationService.getOrganisationMembership(this.organisationId).subscribe({
+      error: err => {
+        if (!environment.production) {
+          console.log('Error: ', err);
+        }
+      }
+    })
+    await this._organisationService.members.subscribe(organisationMembership => {
+      this.dataSource = new MatTableDataSource(organisationMembership)
     })
   }
 }

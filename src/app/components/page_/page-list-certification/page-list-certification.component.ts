@@ -22,17 +22,7 @@ export class PageListCertificationComponent implements OnInit, AfterViewInit {
   constructor(public _certificationService: CertificationService) { }
 
   async ngOnInit(): Promise<void> {
-    this._certificationService.getAll().subscribe({
-      error: err => {
-        if (!environment.production) {
-          console.error('Error: ', err);
-        }
-      }
-    });
-    await this._certificationService.certifications.subscribe(certifications => {
-      console.log(certifications)
-      this.dataSource = new MatTableDataSource(certifications);
-    })
+    await this.updateData();
   }
 
   ngAfterViewInit() {
@@ -51,8 +41,8 @@ export class PageListCertificationComponent implements OnInit, AfterViewInit {
 
   removeCertification(id) {
     this._certificationService.removeCertification(id).subscribe({
-      next: () => {
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production) {
@@ -60,5 +50,18 @@ export class PageListCertificationComponent implements OnInit, AfterViewInit {
         }
       }
     });
+  }
+
+  private async updateData() {
+    this._certificationService.getAll().subscribe({
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    });
+    await this._certificationService.certifications.subscribe(certifications => {
+      this.dataSource = new MatTableDataSource(certifications);
+    })
   }
 }

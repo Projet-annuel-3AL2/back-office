@@ -8,6 +8,7 @@ import {PageOrganisationsComponent} from "./components/page_/page-organisations/
 import {PageOrganisationComponent} from "./components/page_/page-organisation/page-organisation.component";
 import {PageRequestOrganisationComponent} from "./components/page_/page-request-organisation/page-request-organisation.component";
 import {PageListCertificationComponent} from "./components/page_/page-list-certification/page-list-certification.component";
+import {PageRequestsCertificationComponent} from "./components/page_/page-requests-certification/page-requests-certification.component";
 
 const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
@@ -16,7 +17,7 @@ const appRoutes: Routes= [
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
-  {path: 'certification/requests', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'certification/requests', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo:"/"}
 ];
 

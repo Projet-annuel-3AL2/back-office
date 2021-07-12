@@ -21,16 +21,7 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
   constructor(public _organisationService: OrganisationService) { }
 
   async ngOnInit(): Promise<void> {
-    this._organisationService.getRequests().subscribe({
-      error: err => {
-        if (!environment.production) {
-          console.error('Error: ', err);
-        }
-      }
-    });
-    await this._organisationService.organisationRequests.subscribe(organisationRequest => {
-      this.dataSource = new MatTableDataSource(organisationRequest);
-    })
+    await this.updateData();
   }
 
   ngAfterViewInit() {
@@ -49,8 +40,8 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
 
   acceptRequest(id: string) {
     this._organisationService.acceptRequest(id).subscribe({
-      next: () => {
-
+      next: async () => {
+        await this.updateData();
       },
       error: err => {
         if (!environment.production) {
@@ -62,9 +53,9 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
 
   rejectRequest(id: string) {
     this._organisationService.rejectRequest(id).subscribe({
-      next: () => {
-
-      },
+      next: async () => {
+        await this.updateData();
+7      },
       error: err => {
         if (!environment.production) {
           console.error('Error: ', err);
@@ -73,4 +64,16 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private async updateData() {
+    this._organisationService.getRequests().subscribe({
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    });
+    await this._organisationService.organisationRequests.subscribe(organisationRequest => {
+      this.dataSource = new MatTableDataSource(organisationRequest);
+    })
+  }
 }
