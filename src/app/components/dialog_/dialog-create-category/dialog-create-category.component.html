@@ -1,0 +1,22 @@
+<h1 class="dialog-title-create-category-dialog" mat-dialog-title>Création d'une nouvelle Catégorie</h1>
+<mat-divider></mat-divider>
+<form (ngSubmit)="onClickSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" class="name-field">
+      <mat-label>Nom de la catégorie</mat-label>
+      <input [(ngModel)]="newCategory.name" name="name" matInput placeholder="Nom de la catégorie"
+             required>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="dialog-actions-create-category-dialog" mat-dialog-actions>
+    <div class="create-category-dialog-grid">
+      <div class="button-cancel">
+        <button (click)="onNoClick()" mat-button>Annuler</button>
+      </div>
+      <div class="button-send">
+        <button class="button-send" mat-raised-button type="submit">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</form>
