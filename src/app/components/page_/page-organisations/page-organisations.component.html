@@ -39,7 +39,7 @@
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
-            <button [matMenuTriggerFor]="menu" mat-button>Gestion</button>
+            <button [matMenuTriggerFor]="menu" mat-button >Gestion</button>
             <mat-menu #menu="matMenu">
               <button (click)="deleteOrganisation(row.id)" mat-menu-item>Supprimer l'Organisation</button>
               <button (click)="deleteProfilePicture(row.id)" mat-menu-item>Supprimer Photo de profil</button>

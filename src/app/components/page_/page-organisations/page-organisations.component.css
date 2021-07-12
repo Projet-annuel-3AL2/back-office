@@ -11,4 +11,11 @@
 
 .page-organisations-table {
   width: 100%;
+
+}
+
+.tab-organisations.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
 }

@@ -15,7 +15,7 @@ import {OrganisationMembership} from "../../../shared/models/organisation_member
 })
 export class PageOrganisationComponent implements OnInit, AfterViewInit {
   organisationId: string;
-  displayedColumns: string[] = ['user', 'isAdmin', 'id'];
+  displayedColumns: string[] = ['user', 'isAdmin', 'isOwner', 'id'];
   dataSource: MatTableDataSource<OrganisationMembership>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -72,6 +72,7 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
   }
 
   giveAdmin(id) {
+    console.log(id)
     this._organisationService.giveAdminToMember(id, this.organisationId).subscribe({
       next: () =>{
 
