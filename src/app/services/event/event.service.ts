@@ -45,14 +45,14 @@ export class EventService {
   }
 
   getEventMembers(eventId: string): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrl}/event/${eventId}/participants`)
+    return this.http.get<User[]>(`${environment.baseUrl}/event/${eventId}/participants-all`)
       .pipe(map(users => {
         this.participationsSubject.next(users);
         return users;
       }));
   }
 
-  deleteParticipantEvent(eventId: string, userId: string): Observable<Object> {
+  deleteParticipantEvent(userId: string, eventId: string): Observable<Object> {
     return this.http.delete(`${environment.baseUrl}/event/${eventId}/participant/${userId}`);
   }
 
