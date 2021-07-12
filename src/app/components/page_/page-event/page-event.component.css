@@ -1,0 +1,14 @@
+.page-event-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-event-filter {
+  width: 100%;
+}
+
+.page-event-table {
+  width: 100%;
+}
