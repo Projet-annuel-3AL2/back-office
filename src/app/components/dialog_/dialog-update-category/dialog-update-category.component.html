@@ -1,1 +1,22 @@
-<p>dialog-update-category works!</p>
+<h1 class="dialog-title-update-category-dialog" mat-dialog-title>Modification de {{data.category.name}}</h1>
+<mat-divider></mat-divider>
+<form (ngSubmit)="onClickSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Nom de la catégories</mat-label>
+      <input [(ngModel)]="data.category.name" name="name" matInput placeholder="Nom de la Catégorie"
+             required>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="dialog-actions-update-category-dialog" mat-dialog-actions>
+    <div class="update-category-dialog-grid">
+      <div class="button-cancel">
+        <button (click)="onNoClick()" mat-button>Annuler</button>
+      </div>
+      <div class="button-send">
+        <button class="button-send" mat-raised-button type="submit">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</form>
