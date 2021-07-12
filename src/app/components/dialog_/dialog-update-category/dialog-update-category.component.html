@@ -1,8 +1,8 @@
-<h1 class="dialog-title-update-category-dialog" mat-dialog-title>Modification de {{data.category.name}}</h1>
+<h1 class="dialog-title-update-event-dialog" mat-dialog-title>Modification de {{data.category.name}}</h1>
 <mat-divider></mat-divider>
 <form (ngSubmit)="onClickSubmit()">
   <div mat-dialog-content>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="name-field">
       <mat-label>Nom de la catégories</mat-label>
       <input [(ngModel)]="data.category.name" name="name" matInput placeholder="Nom de la Catégorie"
              required>

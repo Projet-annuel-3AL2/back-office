@@ -1,4 +1,4 @@
-.dialog-title-create-event-dialog {
+.dialog-title-update-event-dialog {
   text-align: center;
   font-size: 20px;
   font-family: Roboto, serif;
@@ -6,7 +6,7 @@
   font-weight: bold;
 }
 
-.create-category-dialog-grid {
+.update-category-dialog-grid {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, [col] auto);
@@ -20,4 +20,9 @@
 
 .button-send {
   grid-area: 1 / 3 / 1 / 3;
+}
+
+.name-field {
+  margin-top: 14px;
+  margin-left: 125px;
 }
