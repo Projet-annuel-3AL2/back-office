@@ -5,6 +5,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {User} from "../../../shared/models/user.model";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogShowPictureComponent} from "../../dialog_/dialog-show-picture/dialog-show-picture.component";
 
 @Component({
   selector: 'app-page-users',
@@ -13,12 +15,13 @@ import {MatSort} from "@angular/material/sort";
 })
 export class PageUsersComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['username', 'mail', 'certification', 'id'];
+  displayedColumns: string[] = ['username', 'mail', 'certification', 'profilePicture', 'bannerPicture', 'id'];
   dataSource: MatTableDataSource<User>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public _userService: UserService) {
+  constructor(public _userService: UserService,
+              public dialog: MatDialog) {
 
   }
 
@@ -87,6 +90,16 @@ export class PageUsersComponent implements OnInit, AfterViewInit {
           console.error('Error: ', err);
         }
       }
+    });
+  }
+
+  showDialogShowPicture(link: string) {
+    const dialogRef = this.dialog.open(DialogShowPictureComponent, {
+      width: '500px',
+      data: {link: link}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 }

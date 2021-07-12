@@ -8,7 +8,6 @@ import {Event} from "./event.model";
 export class Organisation {
   id: string;
   name: string;
-  owner: User;
   members: OrganisationMembership[];
   events: Event[];
   profilePicture: Media;

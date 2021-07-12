@@ -11,14 +11,15 @@ import {map} from "rxjs/operators";
 export class UserService {
 
   public user: Observable<User>;
-  private userSubject: BehaviorSubject<User>;
   public users: Observable<User[]>;
+
+  private userSubject: BehaviorSubject<User>;
   private usersSubject: BehaviorSubject<User[]>
 
   constructor(private http: HttpClient) {
     this.userSubject = new BehaviorSubject<User>(null);
-    this.user = this.userSubject.asObservable();
     this.usersSubject = new BehaviorSubject<User[]>(null);
+    this.user = this.userSubject.asObservable();
     this.users = this.usersSubject.asObservable();
   }
 
@@ -38,15 +39,15 @@ export class UserService {
       }))
   }
 
-  deleteUser(id): Observable<void> {
+  deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}`)
   }
 
-  deleteBannerPicture(id): Observable<void> {
+  deleteBannerPicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}/profile-picture`)
   }
 
-  deleteProfilePicture(id): Observable<void> {
+  deleteProfilePicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.baseUrl}/user/${id}/banner-picture`)
   }
 }
