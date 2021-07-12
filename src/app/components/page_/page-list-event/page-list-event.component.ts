@@ -15,7 +15,7 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListEventComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'profilePicture', 'bannerPicture', 'id'];
+  displayedColumns: string[] = ['name', 'profilePicture', 'bannerPicture', 'startDate', 'endDate','id'];
   dataSource: MatTableDataSource<EventModel>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

@@ -65,7 +65,7 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
           console.log('Error: ', err);
         }
       }
-    })
+    });
   }
 
   removeAdminToAdminMember(id) {
@@ -78,7 +78,7 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
           console.log('Error: ', err);
         }
       }
-    })
+    });
   }
 
   private async updateData() {
@@ -96,9 +96,9 @@ export class PageOrganisationComponent implements OnInit, AfterViewInit {
           console.log('Error: ', err);
         }
       }
-    })
+    });
     await this._organisationService.members.subscribe(organisationMembership => {
       this.dataSource = new MatTableDataSource(organisationMembership)
-    })
+    });
   }
 }

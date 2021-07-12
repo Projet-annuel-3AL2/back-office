@@ -36,6 +36,19 @@
             </div>
           </td>
         </ng-container>
+        <ng-container matColumnDef="startDate"  >
+          <th mat-header-cell class="waz-75" *matHeaderCellDef mat-sort-header> Date de début</th>
+          <td mat-cell *matCellDef="let row"> {{row.startDate.toString() | slice: 8: 10 }}
+            /{{row.startDate.toString() | slice: 5: 7}}
+            /{{row.startDate.toString() | slice: 0: 4}} </td>
+        </ng-container>
+        <ng-container matColumnDef="endDate"  >
+          <th mat-header-cell class="waz-75" *matHeaderCellDef mat-sort-header> Date de Fin</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.endDate.toString() | slice: 8: 10 }}
+            /{{row.endDate.toString() | slice: 5: 7}}
+            /{{row.endDate.toString() | slice: 0: 4}} </td>
+        </ng-container>
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
