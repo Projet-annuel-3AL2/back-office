@@ -50,8 +50,8 @@
             <button [matMenuTriggerFor]="menu" mat-button>Gestion</button>
             <mat-menu #menu="matMenu">
               <button (click)="deleteUser(row.username)" mat-menu-item>Supprimer Utilisateur</button>
-              <button (click)="deleteProfilePicture(row.username)" mat-menu-item>Supprimer Photo de profil</button>
-              <button (click)="deleteBannerPicture(row.username)" mat-menu-item>Supprimer Photo de couverture</button>
+              <button *ngIf="row.profilePicture !== undefined" (click)="deleteProfilePicture(row.username)" mat-menu-item>Supprimer Photo de profil</button>
+              <button *ngIf="row.bannerPicture !== undefined" (click)="deleteBannerPicture(row.username)" mat-menu-item>Supprimer Photo de couverture</button>
             </mat-menu>
           </td>
         </ng-container>
