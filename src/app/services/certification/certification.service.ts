@@ -25,7 +25,7 @@ export class CertificationService {
   }
 
   getAll(): Observable<Certification[]>{
-    return this.http.get<Certification[]>(`${environment.baseUrl}/certification/`)
+    return this.http.get<Certification[]>(`${environment.apiBaseUrl}/certification/`)
       .pipe(map(certifications => {
         this.certificationsSubject.next(certifications);
         return certifications;
@@ -33,7 +33,7 @@ export class CertificationService {
   }
 
   getAllRequests(): Observable<CertificationRequest[]> {
-    return this.http.get<CertificationRequest[]>(`${environment.baseUrl}/certification/requests/all`)
+    return this.http.get<CertificationRequest[]>(`${environment.apiBaseUrl}/certification/requests/all`)
       .pipe(map( certificationRequests => {
         this.certificationRequestsSubject.next(certificationRequests);
         return certificationRequests;
@@ -41,14 +41,14 @@ export class CertificationService {
   }
 
   approveRequest(id: string): Observable<Certification> {
-    return this.http.put<Certification>(`${environment.baseUrl}/certification/request/${id}/approve`, null);
+    return this.http.put<Certification>(`${environment.apiBaseUrl}/certification/request/${id}/approve`, null);
   }
 
   removeCertification(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/certification/${id}`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/certification/${id}`);
   }
 
   rejectRequest(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/certification/request/${id}`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/certification/request/${id}`);
   }
 }

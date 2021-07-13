@@ -29,7 +29,7 @@ export class EventService {
   }
 
   getById(id: string): Observable<Event>{
-    return this.http.get<Event>(`${environment.baseUrl}/event/${id}`)
+    return this.http.get<Event>(`${environment.apiBaseUrl}/event/${id}`)
       .pipe(map(event=>{
         this.eventSubject.next(event);
         return event;
@@ -37,7 +37,7 @@ export class EventService {
   }
 
   getAllEvent(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${environment.baseUrl}/event/`)
+    return this.http.get<Event[]>(`${environment.apiBaseUrl}/event/`)
       .pipe(map(events => {
         this.eventsSubject.next(events);
         return events;
@@ -45,7 +45,7 @@ export class EventService {
   }
 
   getEventMembers(eventId: string): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrl}/event/${eventId}/participants-all`)
+    return this.http.get<User[]>(`${environment.apiBaseUrl}/event/${eventId}/participants-all`)
       .pipe(map(users => {
         this.participationsSubject.next(users);
         return users;
@@ -53,20 +53,20 @@ export class EventService {
   }
 
   deleteParticipantEvent(userId: string, eventId: string): Observable<Object> {
-    return this.http.delete(`${environment.baseUrl}/event/${eventId}/participant/${userId}`);
+    return this.http.delete(`${environment.apiBaseUrl}/event/${eventId}/participant/${userId}`);
   }
 
   deleteEvent(eventId: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/event/${eventId}`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${eventId}`);
   }
 
   // TODO : Pas Implementer coter API
   deleteProfilePicture(id: string) {
-    return this.http.delete<void>(`${environment.baseUrl}/event/${id}/profile-picture`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${id}/profile-picture`);
   }
 
   // TODO : Pas Implementer coter API
   deleteBannerPicture(id: string) {
-    return this.http.delete<void>(`${environment.baseUrl}/event/${id}/banner-picture`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${id}/banner-picture`);
   }
 }

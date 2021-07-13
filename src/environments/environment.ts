@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:4500/apt"
+  apiBaseUrl: "http://localhost:4500/apt",
+  frontBaseUrl: "http://localhost:4200/"
 };
 
 /*

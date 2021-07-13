@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getByUsername(username: string): Observable<User> {
-    return this.http.get<User>(`${environment.baseUrl}/user/${username}`)
+    return this.http.get<User>(`${environment.apiBaseUrl}/user/${username}`)
       .pipe(map(user => {
         this.userSubject.next(user);
         return user;
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrl}/user/`)
+    return this.http.get<User[]>(`${environment.apiBaseUrl}/user/`)
       .pipe(map( users => {
         this.usersSubject.next(users);
         return users;
@@ -40,14 +40,14 @@ export class UserService {
   }
 
   deleteUser(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/user/${id}`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/user/${id}`)
   }
 
   deleteBannerPicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/user/${id}/profile-picture`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/user/${id}/profile-picture`)
   }
 
   deleteProfilePicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/user/${id}/banner-picture`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/user/${id}/banner-picture`)
   }
 }

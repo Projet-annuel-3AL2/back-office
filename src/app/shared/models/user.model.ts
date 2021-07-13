@@ -4,6 +4,12 @@ import {Certification} from "./certification.model";
 import {Event} from "./event.model";
 import {Comment} from "./comment.model";
 
+export enum UserType {
+  USER = "USER",
+  ADMIN = "ADMIN",
+  SUPER_ADMIN = "SUPER_ADMIN"
+}
+
 export class User {
   id: string;
   username: string;
@@ -20,4 +26,5 @@ export class User {
   certification?: Certification;
   eventsParticipation?: Event[];
   comments?: Comment[];
+  userType: UserType;
 }

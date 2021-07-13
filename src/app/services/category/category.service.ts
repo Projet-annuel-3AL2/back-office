@@ -22,7 +22,7 @@ export class CategoryService {
   }
 
   getAllCategory(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${environment.baseUrl}/category/`)
+    return this.http.get<Category[]>(`${environment.apiBaseUrl}/category/`)
       .pipe(map(categories => {
         this.categoriesSubject.next(categories);
         return categories;
@@ -30,15 +30,15 @@ export class CategoryService {
   }
 
   removeCategory(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/category/${id}`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/category/${id}`);
   }
 
   createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(`${environment.baseUrl}/category/`, category);
+    return this.http.post<Category>(`${environment.apiBaseUrl}/category/`, category);
   }
 
   updateCategory(category: Category): Observable<Category>{
-    return this.http.put<Category>(`${environment.baseUrl}/category/${category.id}`, category);
+    return this.http.put<Category>(`${environment.apiBaseUrl}/category/${category.id}`, category);
   }
 
 }

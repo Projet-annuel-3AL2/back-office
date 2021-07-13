@@ -35,7 +35,7 @@ export class OrganisationService {
   }
 
   getById(id: string): Observable<Organisation>{
-    return this.http.get<Organisation>(`${environment.baseUrl}/organisation/${id}`)
+    return this.http.get<Organisation>(`${environment.apiBaseUrl}/organisation/${id}`)
       .pipe(map(organisation=>{
         this.organisationSubject.next(organisation);
         return organisation;
@@ -43,7 +43,7 @@ export class OrganisationService {
   }
 
   getAllOrganisation(): Observable<Organisation[]> {
-    return this.http.get<Organisation[]>(`${environment.baseUrl}/organisation/`)
+    return this.http.get<Organisation[]>(`${environment.apiBaseUrl}/organisation/`)
       .pipe(map(organisations => {
         this.organisationsSubject.next(organisations);
         return organisations;
@@ -51,7 +51,7 @@ export class OrganisationService {
   }
 
   getOrganisationMembership(organisationId: string): Observable<OrganisationMembership[]> {
-    return this.http.get<OrganisationMembership[]>(`${environment.baseUrl}/organisation/${organisationId}/membership`)
+    return this.http.get<OrganisationMembership[]>(`${environment.apiBaseUrl}/organisation/${organisationId}/membership`)
       .pipe(map( members=>{
         this.membersSubject.next(members);
         return members;
@@ -59,7 +59,7 @@ export class OrganisationService {
   }
 
   getRequests(): Observable<OrganisationRequest[]> {
-    return this.http.get<OrganisationRequest[]>(`${environment.baseUrl}/organisation/requests`)
+    return this.http.get<OrganisationRequest[]>(`${environment.apiBaseUrl}/organisation/requests`)
       .pipe(map(organisationRequests => {
           this.organisationRequestsSubject.next(organisationRequests);
           return organisationRequests;
@@ -67,44 +67,44 @@ export class OrganisationService {
   }
 
   acceptRequest(id: string): Observable<void> {
-    return this.http.put<void>(`${environment.baseUrl}/organisation/${id}/accept`, null);
+    return this.http.put<void>(`${environment.apiBaseUrl}/organisation/${id}/accept`, null);
   }
 
   rejectRequest(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/organisation/${id}/reject`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/reject`);
   }
 
   deleteOrganisation(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/organisation/${id}`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}`);
   }
 
   // TODO : Pas Implementer coter API
   deleteBannerPicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/organisation/${id}/banner-picture`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/banner-picture`);
   }
 
   // TODO : Pas Implementer coter API
   deleteProfilePicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/organisation/${id}/profile-picture`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/profile-picture`);
   }
 
   deleteOrganisationMembership(userId: string, organisationId: string) {
-    return this.http.delete(`${environment.baseUrl}/organisation/${organisationId}/member/${userId}`);
+    return this.http.delete(`${environment.apiBaseUrl}/organisation/${organisationId}/member/${userId}`);
   }
 
   giveAdminToMember(userId: string, organisationId: string): Observable<void> {
-    return this.http.put<void>(`${environment.baseUrl}/organisation/${organisationId}/add-admin/${userId}`, {});
+    return this.http.put<void>(`${environment.apiBaseUrl}/organisation/${organisationId}/add-admin/${userId}`, {});
   }
 
   removeAdminToAdminMember(userId: string, organisationId: string): Observable<void> {
-    return this.http.put<void>(`${environment.baseUrl}/organisation/${organisationId}/remove-admin/${userId}`, {});
+    return this.http.put<void>(`${environment.apiBaseUrl}/organisation/${organisationId}/remove-admin/${userId}`, {});
   }
 
   isAdmin(id: string): Observable<boolean> {
-    return this.http.get<boolean>(`${environment.baseUrl}/organisation/${id}/is-admin`)
+    return this.http.get<boolean>(`${environment.apiBaseUrl}/organisation/${id}/is-admin`)
   }
 
   isOwner(id: string): Observable<boolean> {
-    return this.http.get<boolean>(`${environment.baseUrl}/organisation/${id}/is-owner`)
+    return this.http.get<boolean>(`${environment.apiBaseUrl}/organisation/${id}/is-owner`)
   }
 }

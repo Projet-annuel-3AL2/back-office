@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, timer} from "rxjs";
-import {User} from "../../shared/models/user.model";
+import {User, UserType} from "../../shared/models/user.model";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../user/user.service";
 import {environment} from "../../../environments/environment";
@@ -27,11 +27,15 @@ export class AuthService {
   }
 
   public login(username: string, password: string): Observable<User> {
-    return this.http.post<User>(`${environment.baseUrl}/auth/login`, {
+    return this.http.post<User>(`${environment.apiBaseUrl}/auth/login`, {
       username,
       password
     })
       .pipe(map(user => {
+        if(user.userType === UserType.USER){
+          this.logout().subscribe()
+          throw new Error("Accès réserver aux administrateurs");
+        }
         localStorage.setItem('user', JSON.stringify(user.username));
         this._userService.getByUsername(user.username).subscribe(this.userSubject.next);
         return user;
@@ -41,7 +45,7 @@ export class AuthService {
   public logout(): Observable<unknown> {
     this.userSubject.next(null);
     localStorage.removeItem('user');
-    return this.http.delete(`${environment.baseUrl}/auth/logout`);
+    return this.http.delete(`${environment.apiBaseUrl}/auth/logout`);
   }
 
   public isAuthenticated(): boolean {
