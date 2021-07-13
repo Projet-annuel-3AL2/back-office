@@ -25,6 +25,7 @@ import {PageEventComponent} from "./components/page_/page-event/page-event.compo
 import {PageListCategoryComponent} from "./components/page_/page-list-category/page-list-category.component";
 import {DialogCreateCategoryComponent} from "./components/dialog_/dialog-create-category/dialog-create-category.component";
 import {DialogUpdateCategoryComponent} from "./components/dialog_/dialog-update-category/dialog-update-category.component";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import {DialogUpdateCategoryComponent} from "./components/dialog_/dialog-update-
     AppRoutingModule
   ],
   exports: [MaterialModule],
-  providers: [
+  providers: [CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalHttpInterceptor,
