@@ -3,32 +3,44 @@
     <a [routerLink]="['/']">
       <img alt="logo" height="75" src="../../../assets/images/logo.png">
     </a>
-  </div>
-  <div *ngIf="_authService.isAuthenticated()">
-    <button [matMenuTriggerFor]="menu" mat-button>Liste des pages</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['']">
-        <span>Liste des Utilisateurs</span>
-      </button>
-      <button mat-menu-item [routerLink]="['organisations']">
-        <span>Liste des Organisations</span>
-      </button>
-      <button mat-menu-item [routerLink]="['organisation/requests/all']">
-        <span>Liste des demandes d'Organisations</span>
-      </button>
-      <button mat-menu-item [routerLink]="['certifications']">
-        <span>Liste des Certifications</span>
-      </button>
-      <button mat-menu-item [routerLink]="['certification/requests']">
-        <span>Liste des demandes de Certification</span>
-      </button>
-      <button mat-menu-item [routerLink]="['events']">
-        <span>Liste des Événements</span>
-      </button>
-      <button mat-menu-item [routerLink]="['categories']">
-        <span>Liste des Categories</span>
-      </button>
-    </mat-menu>
+    <div *ngIf="_authService.isAuthenticated()" fxLayoutAlign="row">
+      <div class="ms-4">
+        <button [matMenuTriggerFor]="userMenu" mat-stroked-button>Utilisateurs</button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item [routerLink]="['']">
+            <span>Utilisateurs</span>
+          </button>
+          <button mat-menu-item [routerLink]="['certifications']">
+            <span>Certifications</span>
+          </button>
+          <button mat-menu-item [routerLink]="['certification/requests']">
+            <span>Demandes de certification</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="ms-2">
+        <button [matMenuTriggerFor]="organisationMenu" mat-stroked-button>Organisations</button>
+        <mat-menu #organisationMenu="matMenu">
+          <button mat-menu-item [routerLink]="['organisations']">
+            <span>Organisations</span>
+          </button>
+          <button mat-menu-item [routerLink]="['organisation/requests/all']">
+            <span>Demandes de créations</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="ms-2">
+        <button [matMenuTriggerFor]="eventMenu" mat-stroked-button>Organisations</button>
+        <mat-menu #eventMenu="matMenu">
+          <button mat-menu-item [routerLink]="['events']">
+            <span>Événements</span>
+          </button>
+          <button mat-menu-item [routerLink]="['categories']">
+            <span>Catégories</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
   </div>
   <div fxFlex fxLayoutAlign="end center">
     <div *ngIf="!_authService.isAuthenticated()" class="auth-buttons">
