@@ -29,9 +29,9 @@ export class AuthService {
       }));
   }
 
-  updateUser() {
+  async updateUser() {
     if (this.getCurrentUsername()) {
-      this.getCurrentUser().subscribe();
+      await this.getCurrentUser().toPromise();
     }
   }
 

@@ -26,6 +26,7 @@ import {PageListCategoryComponent} from "./components/page_/page-list-category/p
 import {DialogCreateCategoryComponent} from "./components/dialog_/dialog-create-category/dialog-create-category.component";
 import {DialogUpdateCategoryComponent} from "./components/dialog_/dialog-update-category/dialog-update-category.component";
 import {CookieService} from "ngx-cookie-service";
+import {ErrorPageComponent} from "./components/error-page/error-page.component";
 
 @NgModule({
   declarations: [
@@ -44,8 +45,8 @@ import {CookieService} from "ngx-cookie-service";
     PageEventComponent,
     PageListCategoryComponent,
     DialogCreateCategoryComponent,
-    DialogUpdateCategoryComponent
-
+    DialogUpdateCategoryComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
