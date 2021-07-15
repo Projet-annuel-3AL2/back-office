@@ -17,13 +17,18 @@ const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
   {path: '', component: PageUsersComponent, canActivate: [AuthGuardService]},
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService]},
+  {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService]},
-  {path: 'organisation/requests/all', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService]},
   {path: 'events', component: PageListEventComponent, canActivate: [AuthGuardService]},
   {path: 'event/:id', component: PageEventComponent, canActivate: [AuthGuardService]},
   {path: 'categories', component: PageListCategoryComponent, canActivate: [AuthGuardService]},
   {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService]},
   {path: 'certification/requests', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'reports/users', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'reports/organisations', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'reports/events', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'reports/posts', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
+  {path: 'reports/groups', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo:"/"}
 ];
 

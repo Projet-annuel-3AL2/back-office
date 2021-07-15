@@ -7,6 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogShowPictureComponent} from "../../dialog_/dialog-show-picture/dialog-show-picture.component";
+import {CertificationService} from "../../../services/certification/certification.service";
 
 @Component({
   selector: 'app-page-users',
@@ -15,14 +16,16 @@ import {DialogShowPictureComponent} from "../../dialog_/dialog-show-picture/dial
 })
 export class PageUsersComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['username', 'mail', 'certification', 'profilePicture', 'bannerPicture', 'id'];
+  displayedColumns: string[] = ['username', 'mail', 'certification', 'actions', 'open'];
   dataSource: MatTableDataSource<User>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  env:any;
 
   constructor(public _userService: UserService,
+              public _certificationService:CertificationService,
               public dialog: MatDialog) {
-
+  this.env=environment;
   }
 
   async ngOnInit(): Promise<void> {
@@ -91,6 +94,10 @@ export class PageUsersComponent implements OnInit, AfterViewInit {
         }
       }
     });
+  }
+
+  removeCertification(id: string) {
+    this._certificationService.removeCertification(id).subscribe();
   }
 
   showDialogShowPicture(link: string) {
