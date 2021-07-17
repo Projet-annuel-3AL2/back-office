@@ -16,13 +16,16 @@ import {Organisation} from "../../../shared/models/organisation.model";
 })
 export class PageOrganisationsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'profilePicture', 'bannerPicture', 'id'];
+  displayedColumns: string[] = ['name', 'profilePicture', 'bannerPicture', 'id', 'open'];
   dataSource: MatTableDataSource<Organisation>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  env: any;
 
   constructor(public dialog: MatDialog,
-              public _organisationService: OrganisationService) { }
+              public _organisationService: OrganisationService) {
+    this.env = environment
+  }
 
   async ngOnInit(): Promise<void> {
     await this.updateData();
