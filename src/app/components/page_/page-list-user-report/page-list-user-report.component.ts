@@ -13,12 +13,15 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListUserReportComponent implements OnInit {
 
-  displayedColumns: string[] = ['userReporter', 'text', 'reportedUser','nbReport', 'createdAt', 'id'];
+  displayedColumns: string[] = ['userReporter', 'text', 'reportedUser','nbReport', 'createdAt', 'open'];
   dataSource: MatTableDataSource<Report>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  env: any;
 
-  constructor(public _reportService: ReportService) { }
+  constructor(public _reportService: ReportService) {
+    this.env = environment
+  }
 
   async ngOnInit(): Promise<void> {
     await this.updateData();
