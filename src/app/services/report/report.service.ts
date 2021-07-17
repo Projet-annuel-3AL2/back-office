@@ -106,6 +106,10 @@ export class ReportService {
   }
 
   private getCountUser(id: string): Observable<number> {
-    return this.http.get<number>(`${environment.apiBaseUrl}/${id}/count-report`)
+    return this.http.get<number>(`${environment.apiBaseUrl}/${id}/count-report`);
+  }
+
+  removeReport(reportId: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiBaseUrl}/user/report/${reportId}`);
   }
 }
