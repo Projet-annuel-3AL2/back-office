@@ -43,19 +43,19 @@
       <div class="ms-2">
         <button [matMenuTriggerFor]="reportMenu" mat-stroked-button>Signalements</button>
         <mat-menu #reportMenu="matMenu">
-          <button mat-menu-item [routerLink]="['categories']">
+          <button mat-menu-item [routerLink]="['reports/users']">
             <span>Utilisateurs</span>
           </button>
-          <button mat-menu-item [routerLink]="['categories']">
+          <button mat-menu-item [routerLink]="['reports/organisations']">
             <span>Organisation</span>
           </button>
-          <button mat-menu-item [routerLink]="['events']">
+          <button mat-menu-item [routerLink]="['reports/events']">
             <span>Événements</span>
           </button>
-          <button mat-menu-item [routerLink]="['categories']">
+          <button mat-menu-item [routerLink]="['reports/posts']">
             <span>Group</span>
           </button>
-          <button mat-menu-item [routerLink]="['categories']">
+          <button mat-menu-item [routerLink]="['reports/groups']">
             <span>Post</span>
           </button>
         </mat-menu>

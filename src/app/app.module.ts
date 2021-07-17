@@ -27,6 +27,11 @@ import {DialogCreateCategoryComponent} from "./components/dialog_/dialog-create-
 import {DialogUpdateCategoryComponent} from "./components/dialog_/dialog-update-category/dialog-update-category.component";
 import {CookieService} from "ngx-cookie-service";
 import {ErrorPageComponent} from "./components/error-page/error-page.component";
+import {PageListEventReportComponent} from "./components/page_/page-list-event-report/page-list-event-report.component";
+import {PageListGroupReportComponent} from "./components/page_/page-list-group-report/page-list-group-report.component";
+import {PageListOrganisationReportComponent} from "./components/page_/page-list-organisation-report/page-list-organisation-report.component";
+import {PageListPostReportComponent} from "./components/page_/page-list-post-report/page-list-post-report.component";
+import {PageListUserReportComponent} from "./components/page_/page-list-user-report/page-list-user-report.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import {ErrorPageComponent} from "./components/error-page/error-page.component";
     PageListCategoryComponent,
     DialogCreateCategoryComponent,
     DialogUpdateCategoryComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PageListEventReportComponent,
+    PageListGroupReportComponent,
+    PageListOrganisationReportComponent,
+    PageListPostReportComponent,
+    PageListUserReportComponent
   ],
   imports: [
     BrowserModule,
