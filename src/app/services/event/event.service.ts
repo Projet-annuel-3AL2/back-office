@@ -45,7 +45,7 @@ export class EventService {
   }
 
   getEventMembers(eventId: string): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiBaseUrl}/event/${eventId}/participants-all`)
+    return this.http.get<User[]>(`${environment.apiBaseUrl}/event/${eventId}/participants`)
       .pipe(map(users => {
         this.participationsSubject.next(users);
         return users;

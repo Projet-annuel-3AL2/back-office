@@ -35,7 +35,7 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
             <div *ngIf="row.certificationRequestStatus !== 1">
-              <button [matMenuTriggerFor]="menu" mat-button>Gestion</button>
+              <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary"><mat-icon>more_vert</mat-icon></button>
               <mat-menu #menu="matMenu">
                 <button (click)="approveRequest(row.id)" mat-menu-item>Accepter</button>
                 <button *ngIf="row.certificationRequestStatus === 0" (click)="approveRequest(row.id)" mat-menu-item>Rejeter</button>

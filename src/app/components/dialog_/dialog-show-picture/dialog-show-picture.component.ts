@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-dialog-show-picture',
@@ -8,10 +9,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class DialogShowPictureComponent implements OnInit {
 
-  @Inject(MAT_DIALOG_DATA) public data: {link: string}
-  constructor(public dialogRef: MatDialogRef<DialogShowPictureComponent>) { }
+
+  env: any;
+  constructor(public dialogRef: MatDialogRef<DialogShowPictureComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {link: any}) { }
 
   ngOnInit(): void {
+    this.env = environment.apiBaseUrl
   }
 
   onNoClick(): void {

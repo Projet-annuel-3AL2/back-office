@@ -29,7 +29,7 @@
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
-            <button [matMenuTriggerFor]="menu" mat-button>Réponse</button>
+            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #menu="matMenu">
               <button (click)="acceptRequest(row.id)" mat-menu-item>Accepter la demande</button>
               <button (click)="rejectRequest(row.id)" mat-menu-item>Rejeter la demande</button>

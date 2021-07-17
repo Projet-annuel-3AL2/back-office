@@ -26,7 +26,7 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
           <td mat-cell *matCellDef="let row">
             <div *ngIf="!row.isOwner">
-              <button [matMenuTriggerFor]="menu" mat-button>Gestion</button>
+              <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary"><mat-icon>more_vert</mat-icon></button>
               <mat-menu #menu="matMenu">
                 <button (click)="deleteMembership(row.user.id)" mat-menu-item>Retirer de l'Organisation</button>
                 <button *ngIf="!row.isAdmin" (click)="giveAdmin(row.user.id)" mat-menu-item>Donner admin</button>

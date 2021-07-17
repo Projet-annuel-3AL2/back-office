@@ -15,13 +15,16 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListEventComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'profilePicture', 'bannerPicture', 'startDate', 'endDate','id'];
+  displayedColumns: string[] = ['name', 'picture', 'startDate', 'endDate','id', 'open'];
   dataSource: MatTableDataSource<EventModel>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  env: any;
 
   constructor(public dialog: MatDialog,
-              public _eventService: EventService) { }
+              public _eventService: EventService) {
+    this.env = environment
+  }
 
   async ngOnInit(): Promise<void> {
     await this.updateData()
@@ -36,6 +39,7 @@ export class PageListEventComponent implements OnInit, AfterViewInit {
       }
     });
     await this._eventService.events.subscribe( events => {
+      console.log(events)
       this.dataSource = new MatTableDataSource<EventModel>(events);
     });
   }
@@ -47,7 +51,7 @@ export class PageListEventComponent implements OnInit, AfterViewInit {
 
   showDialogShowPicture(link: string) {
     const dialogRef = this.dialog.open(DialogShowPictureComponent, {
-      width: '500px',
+      width: '800px',
       data: {link: link}
     });
 
