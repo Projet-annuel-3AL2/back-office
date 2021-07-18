@@ -21,4 +21,5 @@ export class Post {
   shareCount: number;
   commentCount: number;
   isLiked: boolean;
+  nbReport: number;
 }
