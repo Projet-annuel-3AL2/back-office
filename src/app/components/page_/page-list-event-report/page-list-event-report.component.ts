@@ -5,6 +5,7 @@ import {MatSort} from "@angular/material/sort";
 import {Report} from "../../../shared/models/report.model";
 import {ReportService} from "../../../services/report/report.service";
 import {environment} from "../../../../environments/environment";
+import {EventService} from "../../../services/event/event.service";
 
 @Component({
   selector: 'app-page-list-event-report',
@@ -13,13 +14,14 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListEventReportComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['userReporter', 'text', 'reportedEvent','nbReport', 'createdAt', 'open'];
+  displayedColumns: string[] = ['userReporter', 'text', 'reportedEvent','nbReport', 'createdAt','action', 'open'];
   dataSource: MatTableDataSource<Report>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   env: any;
 
-  constructor(public _reportService: ReportService) {
+  constructor(public _reportService: ReportService,
+              private _eventService: EventService) {
     this.env = environment;
   }
 
@@ -56,11 +58,27 @@ export class PageListEventReportComponent implements OnInit, AfterViewInit {
 
   deleteReport(reportId: string){
     this._reportService.removeReport(reportId).subscribe({
+      next: () => {
+        this.updateData();
+      },
       error: err => {
         if (!environment.production) {
           console.error('Error: ', err);
         }
       }
     });
+  }
+
+  removeEvent(id: string) {
+    this._eventService.deleteEvent(id).subscribe({
+      next: () => {
+        this.updateData();
+      },
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    })
   }
 }

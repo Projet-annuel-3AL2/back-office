@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ReportService} from "../../../services/report/report.service";
 import {environment} from "../../../../environments/environment";
+import {GroupService} from "../../../services/group/group.service";
 
 @Component({
   selector: 'app-page-list-group-report',
@@ -13,13 +14,14 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListGroupReportComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['userReporter', 'text', 'reportedGroup','nbReport', 'createdAt'];
+  displayedColumns: string[] = ['userReporter', 'text', 'reportedGroup','nbReport', 'createdAt', 'actions'];
   dataSource: MatTableDataSource<Report>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   env: any;
 
-  constructor(public _reportService: ReportService) {
+  constructor(public _reportService: ReportService,
+              private _groupService: GroupService) {
     this.env = environment;
   }
 
@@ -56,11 +58,27 @@ export class PageListGroupReportComponent implements OnInit, AfterViewInit {
 
   deleteReport(reportId: string){
     this._reportService.removeReport(reportId).subscribe({
+      next: () => {
+        this.updateData();
+      },
       error: err => {
         if (!environment.production) {
           console.error('Error: ', err);
         }
       }
     });
+  }
+
+  removeGroup(id) {
+    this._groupService.removeGroup(id).subscribe({
+      next: () => {
+        this.updateData();
+      },
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    })
   }
 }

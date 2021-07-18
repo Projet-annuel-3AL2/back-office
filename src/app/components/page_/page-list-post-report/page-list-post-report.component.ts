@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ReportService} from "../../../services/report/report.service";
 import {environment} from "../../../../environments/environment";
+import {PostService} from "../../../services/post/post.service";
 
 @Component({
   selector: 'app-page-list-post-report',
@@ -13,13 +14,14 @@ import {environment} from "../../../../environments/environment";
 })
 export class PageListPostReportComponent implements OnInit {
 
-  displayedColumns: string[] = ['userReporter', 'text', 'reportedPost','nbReport', 'createdAt', 'open'];
+  displayedColumns: string[] = ['userReporter', 'text', 'reportedPost','nbReport', 'createdAt','actions', 'open'];
   dataSource: MatTableDataSource<Report>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   env: any;
 
-  constructor(public _reportService: ReportService) {
+  constructor(public _reportService: ReportService,
+              private _postService: PostService) {
     this.env = environment;
   }
 
@@ -56,6 +58,9 @@ export class PageListPostReportComponent implements OnInit {
 
   deleteReport(reportId: string){
     this._reportService.removeReport(reportId).subscribe({
+      next: () => {
+        this.updateData();
+      },
       error: err => {
         if (!environment.production) {
           console.error('Error: ', err);
@@ -64,4 +69,16 @@ export class PageListPostReportComponent implements OnInit {
     });
   }
 
+  removePost(id: string) {
+    this._postService.removePost(id).subscribe({
+      next: () => {
+        this.updateData();
+      },
+      error: err => {
+        if (!environment.production) {
+          console.error('Error: ', err);
+        }
+      }
+    })
+  }
 }
