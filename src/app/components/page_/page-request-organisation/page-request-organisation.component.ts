@@ -55,7 +55,7 @@ export class PageRequestOrganisationComponent implements OnInit, AfterViewInit {
     this._organisationService.rejectRequest(id).subscribe({
       next: async () => {
         await this.updateData();
-7      },
+      },
       error: err => {
         if (!environment.production) {
           console.error('Error: ', err);

@@ -14,6 +14,11 @@ import {PageListEventComponent} from "./components/page_/page-list-event/page-li
 import {PageListCategoryComponent} from "./components/page_/page-list-category/page-list-category.component";
 import {AdminGuardService} from "./services/auth/admin-guard";
 import {ErrorPageComponent} from "./components/error-page/error-page.component";
+import {PageListUserReportComponent} from "./components/page_/page-list-user-report/page-list-user-report.component";
+import {PageListOrganisationReportComponent} from "./components/page_/page-list-organisation-report/page-list-organisation-report.component";
+import {PageListEventReportComponent} from "./components/page_/page-list-event-report/page-list-event-report.component";
+import {PageListPostReportComponent} from "./components/page_/page-list-post-report/page-list-post-report.component";
+import {PageListGroupReportComponent} from "./components/page_/page-list-group-report/page-list-group-report.component";
 
 const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
@@ -27,11 +32,11 @@ const appRoutes: Routes= [
   {path: 'categories', component: PageListCategoryComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'certifications', component: PageListCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'certification/requests', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path: 'reports/users', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path: 'reports/organisations', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path: 'reports/events', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path: 'reports/posts', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  {path: 'reports/groups', component: PageRequestsCertificationComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'reports/users', component: PageListUserReportComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'reports/organisations', component: PageListOrganisationReportComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'reports/events', component: PageListEventReportComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'reports/posts', component: PageListPostReportComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'reports/groups', component: PageListGroupReportComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: '**', redirectTo:"/"}
 ];
 

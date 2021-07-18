@@ -1,0 +1,32 @@
+.page-list-group-report-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-list-group-report-filter {
+  width: 100%;
+}
+
+.page-list-group-report-table {
+  width: 100%;
+}
+
+.column-text {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: justify;
+}
+
+.waz-75{
+  width: 115px;
+}
+
+
+
+.tab-list-group-report.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
