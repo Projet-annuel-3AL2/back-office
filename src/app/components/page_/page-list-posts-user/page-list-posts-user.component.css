@@ -1,0 +1,32 @@
+.page-list-posts-user-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-list-posts-user-filter {
+  width: 100%;
+}
+
+.page-list-posts-user-table {
+  width: 100%;
+}
+
+.column-text {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: justify;
+}
+
+.waz-75{
+  width: 110px;
+}
+
+
+
+.tab-list-posts-user.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
