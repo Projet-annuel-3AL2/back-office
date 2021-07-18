@@ -51,7 +51,7 @@ export class ReportService {
       }))
   }
 
-  private getCountPost(id: string): Observable<number> {
+  getCountPost(id: string): Observable<number> {
     return this.http.get<number>(`${environment.apiBaseUrl}/post/${id}/count-report`)
   }
 
@@ -105,7 +105,7 @@ export class ReportService {
       }))
   }
 
-  private getCountUser(id: string): Observable<number> {
+  getCountUser(id: string): Observable<number> {
     return this.http.get<number>(`${environment.apiBaseUrl}/user/${id}/count-report`);
   }
 
