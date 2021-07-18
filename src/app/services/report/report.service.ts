@@ -38,7 +38,7 @@ export class ReportService {
   }
 
   getPostReports(): Observable<Promise<Report[]>>{
-    return this.http.get<Report[]>(`${environment.apiBaseUrl}/post/reports/all-post`)
+    return this.http.get<Report[]>(`${environment.apiBaseUrl}/post/reports/all-posts`)
       .pipe(map(  async reports => {
         for (const report of reports) {
           await this.getCountPost(report.reportedPost.id).subscribe(nbReport => {
@@ -74,7 +74,7 @@ export class ReportService {
   }
 
   getOrganisationReports(): Observable<Promise<Report[]>>{
-    return this.http.get<Report[]>(`${environment.apiBaseUrl}/organisation/reports/all-event`)
+    return this.http.get<Report[]>(`${environment.apiBaseUrl}/organisation/reports/all-organisation`)
       .pipe(map(  async reports => {
         for (const report of reports) {
           await this.getCountOrganisation(report.reportedOrganisation.id).subscribe(nbReport => {
@@ -92,7 +92,7 @@ export class ReportService {
   }
 
   getUserReports(): Observable<Promise<Report[]>>{
-    return this.http.get<Report[]>(`${environment.apiBaseUrl}/user/reports/all-event`)
+    return this.http.get<Report[]>(`${environment.apiBaseUrl}/user/reports/all-users`)
       .pipe(map(  async reports => {
         for (const report of reports) {
           await this.getCountUser(report.reportedUser.id).subscribe(nbReport => {
@@ -106,7 +106,7 @@ export class ReportService {
   }
 
   private getCountUser(id: string): Observable<number> {
-    return this.http.get<number>(`${environment.apiBaseUrl}/${id}/count-report`);
+    return this.http.get<number>(`${environment.apiBaseUrl}/user/${id}/count-report`);
   }
 
   removeReport(reportId: string): Observable<void> {
