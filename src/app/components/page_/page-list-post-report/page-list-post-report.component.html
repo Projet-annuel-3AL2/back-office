@@ -16,7 +16,7 @@
         </ng-container>
         <ng-container matColumnDef="reportedPost" >
           <th mat-header-cell class="waz-75" *matHeaderCellDef mat-sort-header>Signalement</th>
-          <td mat-cell *matCellDef="let row"> {{row.reportedPost.id}} </td>
+          <td mat-cell *matCellDef="let row"> <a  [routerLink]="['/user/'+ row.reportedPost.creator.username + '/posts']">{{row.reportedPost.creator.username}}</a> </td>
         </ng-container>
         <ng-container matColumnDef="text">
           <th mat-header-cell  *matHeaderCellDef mat-sort-header>Text</th>

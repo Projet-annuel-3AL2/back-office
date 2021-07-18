@@ -32,6 +32,7 @@ import {PageListGroupReportComponent} from "./components/page_/page-list-group-r
 import {PageListOrganisationReportComponent} from "./components/page_/page-list-organisation-report/page-list-organisation-report.component";
 import {PageListPostReportComponent} from "./components/page_/page-list-post-report/page-list-post-report.component";
 import {PageListUserReportComponent} from "./components/page_/page-list-user-report/page-list-user-report.component";
+import {PageListPostsUserComponent} from "./components/page_/page-list-posts-user/page-list-posts-user.component";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {PageListUserReportComponent} from "./components/page_/page-list-user-rep
     PageListGroupReportComponent,
     PageListOrganisationReportComponent,
     PageListPostReportComponent,
-    PageListUserReportComponent
+    PageListUserReportComponent,
+    PageListPostsUserComponent
   ],
   imports: [
     BrowserModule,

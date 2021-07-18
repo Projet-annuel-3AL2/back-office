@@ -12,7 +12,7 @@
       <table mat-table [dataSource]="dataSource" class="page-users-table" matSort>
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom d'utilisateur</th>
-          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+          <td mat-cell *matCellDef="let row"> <a  [routerLink]="['/user/'+ row.username + '/posts']">{{row.username}}</a>  </td>
         </ng-container>
         <ng-container matColumnDef="mail">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>

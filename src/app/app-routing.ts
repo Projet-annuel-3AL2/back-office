@@ -19,6 +19,7 @@ import {PageListOrganisationReportComponent} from "./components/page_/page-list-
 import {PageListEventReportComponent} from "./components/page_/page-list-event-report/page-list-event-report.component";
 import {PageListPostReportComponent} from "./components/page_/page-list-post-report/page-list-post-report.component";
 import {PageListGroupReportComponent} from "./components/page_/page-list-group-report/page-list-group-report.component";
+import {PageListPostsUserComponent} from "./components/page_/page-list-posts-user/page-list-posts-user.component";
 
 const appRoutes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuardService]},
@@ -27,6 +28,7 @@ const appRoutes: Routes= [
   {path: 'organisations', component: PageOrganisationsComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'organisation/requests', component: PageRequestOrganisationComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'organisation/:id', component: PageOrganisationComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {path: 'user/:username/posts', component: PageListPostsUserComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'events', component: PageListEventComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'event/:id', component: PageEventComponent, canActivate: [AuthGuardService, AdminGuardService]},
   {path: 'categories', component: PageListCategoryComponent, canActivate: [AuthGuardService, AdminGuardService]},
