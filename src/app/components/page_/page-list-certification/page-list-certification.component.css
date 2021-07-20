@@ -1,0 +1,21 @@
+.page-list-certification-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-list-certification-filter {
+  width: 100%;
+}
+
+.page-list-certification-table {
+  width: 100%;
+}
+
+
+.tab-list-certification.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}

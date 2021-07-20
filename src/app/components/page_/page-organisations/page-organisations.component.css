@@ -1,0 +1,21 @@
+.page-organisations-title {
+  padding-left: 50px;
+  font-family: Roboto, serif;
+  color: #00643C;
+  font-weight: bold;
+  font-size: 46px;
+}
+.page-organisations-filter {
+  width: 100%;
+}
+
+.page-organisations-table {
+  width: 100%;
+
+}
+
+.tab-organisations.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}

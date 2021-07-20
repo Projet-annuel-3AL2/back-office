@@ -1,0 +1,35 @@
+<div class="page-event row m-0">
+  <div class="col-md-1 my-3"></div>
+  <div class="col-md-9 my-3">
+    <div class="page-event-title">
+      <h1>Liste des participants de {{(_eventService.event|async)?.name}}</h1>
+    </div>
+    <mat-form-field class="page-event-filter" appearance="standard">
+      <mat-label>Recherche</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Utilisateur..." #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="page-event-table" matSort>
+        <ng-container matColumnDef="user">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+        </ng-container>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+          <td mat-cell *matCellDef="let row">
+            <button (click)="removeParticipant(row.id)" mat-stroked-button color="warn">Retirer de l'évènement</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">Il n'y a pas de résultat correspondant à la recherche "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [length]="(_eventService.events|async)?.length"
+                     [pageSize]="20"
+                     [pageSizeOptions]="[20, 100]"></mat-paginator>
+    </div>
+  </div>
+  <div class="col-md-1 my-3"></div>
+</div>

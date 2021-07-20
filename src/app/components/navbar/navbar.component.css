@@ -1,0 +1,12 @@
+.auth-buttons {
+  display: table-cell;
+}
+
+mat-toolbar {
+  min-height: 80px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 5px grey;
+}
