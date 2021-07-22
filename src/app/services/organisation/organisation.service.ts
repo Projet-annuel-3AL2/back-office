@@ -4,7 +4,6 @@ import {Organisation} from "../../shared/models/organisation.model";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {map} from "rxjs/operators";
-import {User} from "../../shared/models/user.model";
 import {OrganisationMembership} from "../../shared/models/organisation_membership.model";
 import {OrganisationRequest} from "../../shared/models/organisation_request.model";
 
@@ -59,11 +58,11 @@ export class OrganisationService {
   }
 
   getRequests(): Observable<OrganisationRequest[]> {
-    return this.http.get<OrganisationRequest[]>(`${environment.apiBaseUrl}/organisation/requests`)
+    return this.http.get<OrganisationRequest[]>(`${environment.apiBaseUrl}/organisation/create-requests`)
       .pipe(map(organisationRequests => {
           this.organisationRequestsSubject.next(organisationRequests);
           return organisationRequests;
-      }))
+      }));
   }
 
   acceptRequest(id: string): Observable<void> {
