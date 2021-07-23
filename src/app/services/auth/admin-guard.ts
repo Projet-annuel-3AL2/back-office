@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {CanActivate, Router} from "@angular/router";
+import {CanActivate, Router, UrlTree} from "@angular/router";
 import {AuthService} from "./auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserType} from "../../shared/models/user.model";
@@ -11,12 +11,11 @@ export class AdminGuardService implements CanActivate {
   constructor(public auth: AuthService, public router: Router, private snackBar: MatSnackBar) {
   }
 
-  async canActivate(): Promise<boolean> {
+  async canActivate(): Promise<boolean | UrlTree> {
     const user = await this.auth.getCurrentUser().toPromise();
     if (user && user.userType === UserType.USER) {
-      this.router.navigate(['error']);
       this.snackBar.open("Vous devez avoir les droits d'administration", "Fermer")
-      return false;
+      return this.router.parseUrl('error');
     }
     return true;
   }
