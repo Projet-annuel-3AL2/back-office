@@ -38,13 +38,19 @@ export class PageListEventReportComponent implements OnInit, AfterViewInit {
       }
     });
     await this._reportService.reports.subscribe(reports => {
-      this.dataSource = new MatTableDataSource(reports);
+      if (reports !== null){
+
+        this.dataSource = new MatTableDataSource(reports);
+      }
     });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.sort !== null?this.dataSource.sort = this.sort: null;
+    if (this.dataSource !== undefined){
+      this.dataSource.paginator = this.paginator;
+      this.sort !== null?this.dataSource.sort = this.sort: null;
+    }
+
   }
 
   applyFilter(event: Event) {

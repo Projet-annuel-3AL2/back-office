@@ -77,12 +77,10 @@ export class OrganisationService {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}`);
   }
 
-  // TODO : Pas Implementer coter API
   deleteBannerPicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/banner-picture`);
   }
 
-  // TODO : Pas Implementer coter API
   deleteProfilePicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/profile-picture`);
   }

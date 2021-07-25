@@ -43,8 +43,10 @@ export class PageListOrganisationReportComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.sort !== null?this.dataSource.sort = this.sort: null;
+    if (this.dataSource !== undefined){
+      this.dataSource.paginator = this.paginator;
+      this.sort !== null?this.dataSource.sort = this.sort: null;
+    }
   }
 
   applyFilter(event: Event) {
