@@ -42,10 +42,10 @@ export class AuthService {
     })
       .pipe(map(user => {
         if(user.userType === UserType.USER){
-          this.logout().subscribe()
+          this.logout().toPromise().then()
           throw new Error("Accès réserver aux administrateurs");
         }
-        this.cookieService.set('user', user.username,3,"", environment.domain,false,'Strict');
+        this.cookieService.set('user', user.username,3,"", environment.domain,false,'Lax');
         this._userService.getByUsername(user.username).subscribe(this.userSubject.next);
         return user;
       }));

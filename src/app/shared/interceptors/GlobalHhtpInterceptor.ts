@@ -21,8 +21,8 @@ export class GlobalHttpInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
             this.authService = this.inj.get(AuthService)
-            this.authService.logout();
-            this.router.navigateByUrl("/login")
+            this.authService.logout().toPromise().then();
+            this.router.navigateByUrl("/login").then();
           }
           return throwError(error);
         }
