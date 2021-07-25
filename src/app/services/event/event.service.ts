@@ -62,7 +62,7 @@ export class EventService {
 
 
   deletePicture(id: string) {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${id}/picture`);
+    return this.http.delete<void>(`${environment.apiBaseUrl}/media/${id}0`);
   }
 
 }

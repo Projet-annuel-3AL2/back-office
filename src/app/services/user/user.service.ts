@@ -44,10 +44,10 @@ export class UserService {
   }
 
   deleteBannerPicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/user/${id}/profile-picture`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/media/${id}`)
   }
 
   deleteProfilePicture(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/user/${id}/banner-picture`)
+    return this.http.delete<void>(`${environment.apiBaseUrl}/media/${id}`)
   }
 }

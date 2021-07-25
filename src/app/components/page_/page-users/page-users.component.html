@@ -34,8 +34,8 @@
             </button>
             <mat-menu #menu="matMenu">
               <button (click)="deleteUser(row.username)" mat-menu-item>Supprimer utilisateur</button>
-              <button *ngIf="row.profilePicture" (click)="deleteProfilePicture(row.id)" mat-menu-item>Supprimer la photo de profil</button>
-              <button *ngIf="row.bannerPicture" (click)="deleteBannerPicture(row.id)" mat-menu-item>Supprimer la photo de couverture</button>
+              <button *ngIf="row.profilePicture" (click)="deleteProfilePicture(row.profilePicture.id)" mat-menu-item>Supprimer la photo de profil</button>
+              <button *ngIf="row.bannerPicture" (click)="deleteBannerPicture(row.bannerPicture.id)" mat-menu-item>Supprimer la photo de couverture</button>
               <button *ngIf="row.certification" (click)="removeCertification(row.username)" mat-menu-item>Retirer la certification</button>
             </mat-menu>
           </td>
