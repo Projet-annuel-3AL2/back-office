@@ -16,7 +16,7 @@ import {CertificationService} from "../../../services/certification/certificatio
 })
 export class PageUsersComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['username', 'mail', 'certification', 'actions', 'open'];
+  displayedColumns: string[] = ['username', 'mail', 'certification','type', 'actions', 'open'];
   dataSource: MatTableDataSource<User>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

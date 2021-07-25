@@ -18,6 +18,10 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
           <td mat-cell *matCellDef="let row"> {{row.mail}} </td>
         </ng-container>
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type d'utilisateur</th>
+          <td mat-cell *matCellDef="let row"> {{row.userType}}</td>
+        </ng-container>
         <ng-container matColumnDef="certification">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Certification</th>
           <td mat-cell *matCellDef="let row"> {{row.certification ? "Oui": "Non"}}</td>
@@ -25,12 +29,14 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
           <td mat-cell *matCellDef="let row">
-            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary"><mat-icon>more_vert</mat-icon></button>
+            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary">
+              <mat-icon>more_vert</mat-icon>
+            </button>
             <mat-menu #menu="matMenu">
-              <button (click)="deleteUser(row.username)" mat-menu-item>Supprimer utilisateur</button>
+              <button *ngIf="row.userType !== 'SUPER_ADMIN'" (click)="deleteUser(row.username)" mat-menu-item>Supprimer utilisateur</button>
               <button *ngIf="row.profilePicture" (click)="deleteProfilePicture(row.username)" mat-menu-item>Supprimer la photo de profil</button>
               <button *ngIf="row.bannerPicture" (click)="deleteBannerPicture(row.username)" mat-menu-item>Supprimer la photo de couverture</button>
-              <button *ngIf="row.certification" (click)="removeCertification(row.username)" mat-menu-item>Retirer la certification</button>
+              <button *ngIf="row.certification" (click)="removeCertification(row.certification.id)" mat-menu-item>Retirer la certification</button>
             </mat-menu>
           </td>
         </ng-container>
@@ -45,8 +51,8 @@
         </tr>
       </table>
       <mat-paginator [length]="(_userService.users|async)?.length"
-                     [pageSize]="20"
-                     [pageSizeOptions]="[20, 100]"></mat-paginator>
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
     </div>
   </div>
   <div class="col-md-1 my-3"></div>
