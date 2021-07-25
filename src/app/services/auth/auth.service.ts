@@ -45,7 +45,7 @@ export class AuthService {
           this.logout().toPromise().then()
           throw new Error("Accès réserver aux administrateurs");
         }
-        this.cookieService.set('user', user.username,3,"", environment.domain,false,'Lax');
+        this.cookieService.set('user', user.username,{sameSite:"Lax",expires:3});
         this._userService.getByUsername(user.username).subscribe(this.userSubject.next);
         return user;
       }));
