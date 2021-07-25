@@ -59,7 +59,7 @@ export class OrganisationService {
   }
 
   getRequests(): Observable<OrganisationRequest[]> {
-    return this.http.get<OrganisationRequest[]>(`${environment.apiBaseUrl}/organisation/requests`)
+    return this.http.get<OrganisationRequest[]>(`${environment.apiBaseUrl}/organisation/create-requests`)
       .pipe(map(organisationRequests => {
           this.organisationRequestsSubject.next(organisationRequests);
           return organisationRequests;
@@ -78,12 +78,10 @@ export class OrganisationService {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}`);
   }
 
-  // TODO : Pas Implementer coter API
   deleteBannerPicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/banner-picture`);
   }
 
-  // TODO : Pas Implementer coter API
   deleteProfilePicture(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiBaseUrl}/organisation/${id}/profile-picture`);
   }

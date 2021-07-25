@@ -39,8 +39,7 @@ export class PageUsersComponent implements OnInit, AfterViewInit {
     );
     await this._userService.users.subscribe(users => {
       this.dataSource = new MatTableDataSource(users)
-    })
-
+    });
   }
 
   ngAfterViewInit() {
