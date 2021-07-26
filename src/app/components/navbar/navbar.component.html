@@ -3,7 +3,7 @@
     <a [routerLink]="['/']">
       <img alt="logo" height="75" src="../../../assets/images/logo.png">
     </a>
-    <div *ngIf="_authService.isAuthenticated() && (_authService.user|async)?.userType !== 'USER'" fxLayoutAlign="row">
+    <div *ngIf="_authService.isAuthenticated()  && (_authService.user|async)?.userType !== 'USER'" fxLayoutAlign="row">
       <div class="ms-4">
         <button [matMenuTriggerFor]="userMenu" mat-stroked-button>Utilisateurs</button>
         <mat-menu #userMenu="matMenu">

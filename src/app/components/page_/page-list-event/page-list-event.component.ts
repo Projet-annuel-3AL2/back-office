@@ -39,7 +39,6 @@ export class PageListEventComponent implements OnInit, AfterViewInit {
       }
     });
     await this._eventService.events.subscribe( events => {
-      console.log(events)
       this.dataSource = new MatTableDataSource<EventModel>(events);
     });
   }
@@ -73,20 +72,7 @@ export class PageListEventComponent implements OnInit, AfterViewInit {
   }
 
   deleteProfilePicture(id: string) {
-    this._eventService.deleteProfilePicture(id).subscribe({
-      next: async () => {
-        await this.updateData();
-      },
-      error: err => {
-        if (!environment.production) {
-          console.error('Error: ', err);
-        }
-      }
-    });
-  }
-
-  deleteBannerPicture(id: string) {
-    this._eventService.deleteBannerPicture(id).subscribe({
+    this._eventService.deletePicture(id).subscribe({
       next: async () => {
         await this.updateData();
       },

@@ -60,13 +60,9 @@ export class EventService {
     return this.http.delete<void>(`${environment.apiBaseUrl}/event/${eventId}`);
   }
 
-  // TODO : Pas Implementer coter API
-  deleteProfilePicture(id: string) {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${id}/profile-picture`);
+
+  deletePicture(id: string) {
+    return this.http.delete<void>(`${environment.apiBaseUrl}/media/${id}0`);
   }
 
-  // TODO : Pas Implementer coter API
-  deleteBannerPicture(id: string) {
-    return this.http.delete<void>(`${environment.apiBaseUrl}/event/${id}/banner-picture`);
-  }
 }

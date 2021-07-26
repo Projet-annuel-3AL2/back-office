@@ -39,7 +39,7 @@
             <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #menu="matMenu">
               <button (click)="deleteEvent(row.id)" mat-menu-item>Supprimer l'Évènement</button>
-              <button *ngIf="row.picture !== null" (click)="deleteProfilePicture(row.id)" mat-menu-item>Supprimer la photo</button>
+              <button *ngIf="row.picture !== null" (click)="deleteProfilePicture(row.picture.id)" mat-menu-item>Supprimer la photo</button>
             </mat-menu>
           </td>
         </ng-container>
